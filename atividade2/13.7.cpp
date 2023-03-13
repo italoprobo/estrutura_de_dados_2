@@ -5,18 +5,19 @@ int main() {
     raiz = insereNo(raiz, 15);
     insereNo(raiz, 30);
     insereNo(raiz, 35);
+    insereNo(raiz, 28);
     insereNo(raiz, 34);
     insereNo(raiz, 57);
 
-    printf("type any number: ");
-    int x;
-    scanf("%d", &x);
+    No* b = NULL;
+    b = insereNo(b, 15);
+    insereNo(b, 30);
+    insereNo(b, 35);
+    insereNo(b, 28);
+    insereNo(b, 34);
+    insereNo(b, 57);
 
-    if (tem(raiz, x)) {
-        printf("Number %d find on tree!", x);
-    }else {
-        printf("Number %d does not find on tree!", x);
-    }
+    printf("%d", igual(raiz, b));
 
     return 0;
 }
