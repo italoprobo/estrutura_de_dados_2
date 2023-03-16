@@ -100,3 +100,45 @@ int igual(No* a, No* b){
     } 
     return igual(a->esquerda, b->esquerda) && igual(a->direita, b->direita);
 }
+
+int exibe_dec(No *n){
+    if(n != NULL){
+        exibe_dec(n->direita);
+        printf("%d ", n->valor);
+        exibe_dec(n->esquerda);
+    }
+}
+
+int completa(No *n){
+    if(n == NULL){
+        return 0;
+    }
+
+    int altura = altura_arvore(n);
+    int qnt_nos = qtd_nos(n);
+
+    if(qnt_nos == (1 << altura) - 1){
+        return 1;
+    }else{
+        return 0;
+    }
+}
+
+int eh_arvore_binaria_cheia(No* raiz) {
+    if (raiz == NULL) {
+        return 0; 
+    }
+    
+    int altura_esquerda = altura_arvore(raiz->esquerda);
+    int altura_direita = altura_arvore(raiz->direita);
+    
+    if (altura_esquerda != altura_direita) {
+        return 0; 
+    } else {
+        int qtd_nos_esquerda = qtd_nos(raiz->esquerda);
+        int qtd_nos_direita = qtd_nos(raiz->direita);
+        int qtd_nos_total = qtd_nos_esquerda + qtd_nos_direita + 1;
+        
+        return qtd_nos_total == (1 << altura_esquerda) - 1;
+    }
+}
